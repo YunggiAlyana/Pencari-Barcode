@@ -1,4 +1,4 @@
-# 📦 Web Barcode Finder
+# 📦 Web Pencari Barcode
 
 Web ini adalah aplikasi sederhana untuk mencari informasi barang berdasarkan **PLU (Product Lookup Unit) atau Barcode**. Sel*ain itu, pengguna juga dapat menambahkan saran barang yang akan dikirimkan* ke email admin menggunakan **FormSubmit**.
 
