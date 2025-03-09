@@ -19,12 +19,16 @@
         <svg id="barcode"></svg>
         
         <h2>Tambahkan Saran Barang</h2>
-        <form action="https://formsubmit.co/yunggialyana123@gmail.com" method="POST">
-            <input type="text" name="plu" placeholder="PLU" required>
-            <input type="text" name="nama" placeholder="Nama Barang" required>
-            <input type="text" name="barcode" placeholder="Barcode (Opsional)">
-            <button type="submit">Kirim Saran</button>
-        </form>
+        
+<form action="https://formsubmit.co/yunggialyana123@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://yunggialyana.github.io/Pencari-Barcode/">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="PLU" required>
+    <input type="text" name="Nama Barang" required>
+    <input type="text" name="Barcode" required>
+    <button type="submit">Kirim</button>
+</form>
+
     </div>
 
     <script src="script.js"></script>
