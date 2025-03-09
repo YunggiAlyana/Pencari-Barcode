@@ -60,7 +60,7 @@ Web ini adalah aplikasi sederhana untuk mencari informasi barang berdasarkan **P
 ## Dukung Proyek Ini  
 Jika kamu merasa website ini bermanfaat, kamu bisa mendukung pengembang dengan mentraktir kopi di Trakteer:  
 
-[![Trakteer](https://cdn.trakteer.id/images/mix/navbar-logo-lite.png)](https://trakteer.id/yunggi_alyana/tip)
+https://trakteer.id/yunggi_alyana/tip
 
 ---
 
