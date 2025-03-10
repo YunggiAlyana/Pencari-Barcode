@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #f7cccf;
     margin: 0;
     padding: 20px;
 }
@@ -24,14 +24,14 @@ input, button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #cc313d;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #c22a53;
 }
 
 #result {
