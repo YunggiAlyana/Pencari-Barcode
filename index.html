@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pencarian Barang</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-    <script src="script.js"></script>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pencarian Barang</title>
+
+  <!-- Link ke file CSS utama (isi style.css kamu) -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JsBarcode untuk menampilkan barcode -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
+  <!-- Script pencarian (lihat isi di script.js) -->
+  <script src="script.js" defer></script>
 <body>
-    <div class="container">
-        <h1>Pencarian Barang</h1>
-        <input type="text" id="search" placeholder="Masukkan PLU atau Barcode">
-        <button onclick="cariBarang()">Cari</button>
-        
-        <div id="result"></div>
-        
-        <svg id="barcode"></svg>
-        
-        <h2>Tambahkan Saran Barang</h2>
-        
-<form action="https://formsubmit.co/yunggialyana123@gmail.com" method="POST">
-    <input type="hidden" name="_next" value="https://yunggialyana.github.io/Pencari-Barcode/"> 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="PLU" required>
-    <input type="text" name="Nama Barang" required>
-    <input type="text" name="Barcode" required>
-    <button type="submit">Kirim</button>
-</form>
 
+  <!-- Bagian atas -->
+  <div id="topSection" class="container">
+    <h1>Pencarian Barang</h1>
+    <input type="text" id="search" placeholder="Masukkan PLU atau Barcode">
+    <button onclick="cariBarang()">Cari</button>
+
+    <div id="result"></div>
+    <svg id="barcode"></svg>
+
+    <!-- Form saran berada di atas secara default -->
+    <div id="addFormContainer">
+      <h2>Tambahkan Saran Barang</h2>
+      <form action="https://formsubmit.co/yunggialyana123@gmail.coms" method="POST">
+        <input type="text" name="plu" placeholder="PLU" required>
+        <input type="text" name="nama" placeholder="Nama Barang" required>
+        <input type="text" name="barcode" placeholder="Barcode (Opsional)">
+        <button type="submit">Kirim Saran</button>
+      </form>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Bagian bawah (sembunyikan dulu) -->
+  <div id="bottomSection" class="container" style="display: none;">
+    <!-- Akan diisi form saran jika barang ditemukan & punya barcode -->
+  </div>
+
+  <!-- Tombol Trakteer di kanan bawah -->
+  <div class="trakteer-container">
+    <div class="bubble-wrapper">
+      <a href="https://trakteer.id/yunggi_alyana/tip" class="trakteer-button" target="_blank">
+        <img src="img/trakteer-icon.png" alt="Trakteer Logo">
+        Trakteer
+      </a>
+      <div class="trakteer-bubble">
+        Web-nya berguna? Trakteer admin buat ngopi dong ☕
+      </div>
+    </div>
+  </div>
+
 </body>
+</head>
 </html>
