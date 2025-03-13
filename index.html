@@ -4,27 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pencarian Barang</title>
-
-  <!-- Link ke file CSS utama (isi style.css kamu) -->
+  <!-- Link ke file CSS utama -->
   <link rel="stylesheet" href="style.css">
-
   <!-- JsBarcode untuk menampilkan barcode -->
   <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-
-  <!-- Script pencarian (lihat isi di script.js) -->
+  <!-- Script pencarian -->
   <script src="script.js" defer></script>
+</head>
 <body>
-
-  <!-- Bagian atas -->
-  <div id="topSection" class="container">
+  <!-- Bagian utama: gabungan pencarian dan form saran -->
+  <div id="mainSection" class="container">
     <h1>Pencarian Barang</h1>
     <input type="text" id="search" placeholder="Masukkan PLU atau Barcode">
     <button onclick="cariBarang()">Cari</button>
-
-    <div id="result"></div>
-    <svg id="barcode"></svg>
-
-    <!-- Form saran berada di atas secara default -->
+    
+    <!-- Form saran yang sudah digabung -->
     <div id="addFormContainer">
       <h2>Tambahkan Saran Barang</h2>
       <form action="https://formsubmit.co/yunggialyana123@gmail.com" method="POST">
@@ -35,12 +29,22 @@
       </form>
     </div>
   </div>
-
-  <!-- Bagian bawah (sembunyikan dulu) -->
-  <div id="bottomSection" class="container" style="display: none;">
-    <!-- Akan diisi form saran jika barang ditemukan & punya barcode -->
+  
+  <!-- Pop-up hasil pencarian (tersembunyi secara default) -->
+  <div id="resultPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Detail Barang</h2>
+      <div id="resultContent">
+        <!-- Hasil pencarian akan ditampilkan di sini -->
+      </div>
+      <svg id="barcode"></svg>
+    </div>
   </div>
-
+  
+  <!-- Overlay gelap untuk latar belakang popup -->
+  <div id="overlay" onclick="closePopup()"></div>
+  
   <!-- Tombol Trakteer di kanan bawah -->
   <div class="trakteer-container">
     <div class="bubble-wrapper">
@@ -53,7 +57,5 @@
       </div>
     </div>
   </div>
-
 </body>
-</head>
 </html>
