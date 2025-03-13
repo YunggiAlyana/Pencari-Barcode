@@ -16,6 +16,7 @@
   <div id="mainSection" class="container">
     <h1>Pencarian Barang</h1>
     <input type="text" id="search" placeholder="Masukkan PLU atau Barcode">
+    <div id="searchHistory"></div>
     <button onclick="cariBarang()">Cari</button>
     
     <!-- Form saran yang sudah digabung -->
@@ -39,6 +40,7 @@
         <!-- Hasil pencarian akan ditampilkan di sini -->
       </div>
       <svg id="barcode"></svg>
+      <button id="printBarcode" onclick="cetakBarcode()">Cetak Barcode</button>
     </div>
   </div>
   
