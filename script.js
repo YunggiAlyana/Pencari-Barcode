@@ -2,7 +2,7 @@ let dataBarang = [];
 let searchInput = document.getElementById("search");
 let searchHistoryContainer = document.getElementById("searchHistory");
 
-// **Load data.json saat halaman dimuat**
+// Load data.json saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function () {
   fetch("data.json")
     .then((response) => response.json())
@@ -12,22 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Gagal mengambil data:", error));
 
-  loadSearchHistory(); // **Tampilkan history pencarian di awal**
+  showSearchHistory(); // Ganti loadSearchHistory() dengan showSearchHistory()
 });
 
-// **Event saat input diklik (hanya tampilkan history, tanpa autocomplete)**
+// Event saat input diklik (hanya tampilkan history, tanpa autocomplete)
 searchInput.addEventListener("focus", function () {
   showSearchHistory();
 });
 
-// **Event klik di luar search agar history hilang**
+// Event klik di luar search agar history hilang
 document.addEventListener("click", function (event) {
   if (!searchInput.contains(event.target) && !searchHistoryContainer.contains(event.target)) {
     searchHistoryContainer.style.display = "none";
   }
 });
 
-// **Fungsi menampilkan history pencarian**
+// Fungsi menampilkan history pencarian
 function showSearchHistory() {
   searchHistoryContainer.innerHTML = "";
   let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
@@ -47,7 +47,7 @@ function showSearchHistory() {
   searchHistoryContainer.style.display = history.length ? "block" : "none";
 }
 
-// **Fungsi mencari barang**
+// Fungsi mencari barang
 function cariBarang(keyword) {
   let resultContent = document.getElementById("resultContent");
   let barcodeSvg = document.getElementById("barcode");
@@ -82,7 +82,7 @@ function cariBarang(keyword) {
   }
 }
 
-// **Fungsi menyimpan history pencarian**
+// Fungsi menyimpan history pencarian
 function saveSearchHistory(keyword) {
   let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
   history = history.filter((item) => item !== keyword);
@@ -92,19 +92,19 @@ function saveSearchHistory(keyword) {
   localStorage.setItem("searchHistory", JSON.stringify(history));
 }
 
-// **Fungsi normalisasi barcode (13 digit)**
+// Fungsi normalisasi barcode (13 digit)
 function normalizeBarcode(barcode) {
   barcode = barcode.toString();
   return barcode.length === 11 ? "00" + barcode : barcode.length === 12 ? "0" + barcode : barcode;
 }
 
-// **Fungsi menampilkan popup**
+// Fungsi menampilkan popup
 function showPopup() {
   document.getElementById("resultPopup").classList.add("active");
   document.getElementById("overlay").style.display = "block";
 }
 
-// **Fungsi menutup popup**
+// Fungsi menutup popup
 function closePopup() {
   document.getElementById("resultPopup").classList.remove("active");
   document.getElementById("overlay").style.display = "none";
@@ -112,7 +112,30 @@ function closePopup() {
   searchInput.focus();
 }
 
-// **Tutup popup dengan tombol Escape**
+// Tambahkan fungsi cetakBarcode
+function cetakBarcode() {
+  // Simpan konten halaman saat ini
+  let originalContents = document.body.innerHTML;
+  
+  // Buat halaman cetak yang hanya berisi barcode
+  let barcodeElement = document.getElementById("barcode");
+  let printContents = '<div style="text-align:center; padding:20px;">' + barcodeElement.outerHTML + '</div>';
+  
+  // Ganti konten dengan barcode saja
+  document.body.innerHTML = printContents;
+  
+  // Cetak halaman
+  window.print();
+  
+  // Kembalikan konten asli
+  document.body.innerHTML = originalContents;
+  
+  // Refresh event listeners yang mungkin hilang
+  document.getElementById("search").addEventListener("focus", showSearchHistory);
+  document.getElementById("printBarcode").onclick = cetakBarcode;
+}
+
+// Tutup popup dengan tombol Escape
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") closePopup();
 });
